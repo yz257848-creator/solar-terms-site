@@ -1,0 +1,534 @@
+@charset "utf-8";
+/* ==========================================================================
+   detail.css —— 节气详情页样式：题头、释义、三候、民俗、养生、诗词、前后切换
+   ========================================================================== */
+
+/* ---------- 1. 题头 ---------- */
+.detail-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.92fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 48px) 0 clamp(32px, 5vw, 60px);
+}
+
+.detail-hero__index {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  letter-spacing: 0.3em;
+  color: var(--cinnabar);
+  text-transform: uppercase;
+}
+
+.detail-hero__index::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--cinnabar);
+  opacity: 0.5;
+}
+
+.detail-hero h1 {
+  margin-top: 12px;
+  font-size: clamp(44px, 8vw, 88px);
+  line-height: 1.06;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.detail-hero__pinyin {
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  letter-spacing: 0.36em;
+  color: var(--ink-3);
+}
+
+.detail-hero__slogan {
+  margin-top: 18px;
+  font-size: clamp(16px, 2vw, 19px);
+  letter-spacing: 0.2em;
+  color: var(--jade);
+  padding-left: 16px;
+  border-left: 2px solid var(--jade-3);
+}
+
+/* 数据表：交节时间 / 黄经 / 季节 / 农谚 */
+.detail-facts {
+  margin-top: 26px;
+  display: grid;
+  gap: 0;
+  max-width: 460px;
+}
+
+.detail-facts__row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.detail-facts__row dt {
+  flex: none;
+  width: 5.2em;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+}
+
+.detail-facts__row dd {
+  font-size: 14.8px;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+.detail-hero__art {
+  position: relative;
+}
+
+.detail-hero__art img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+
+/* 印章：显示节气名，竖排 */
+.detail-hero__seal {
+  position: absolute;
+  right: -10px;
+  bottom: -14px;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  background: var(--cinnabar);
+  color: #fdf8ef;
+  font-size: 17px;
+  line-height: 1.15;
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42), 0 8px 20px rgba(168, 72, 60, 0.2);
+}
+
+@media (max-width: 860px) {
+  .detail-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-hero__art {
+    order: -1;
+    max-width: 520px;
+  }
+}
+
+/* ---------- 3. 内容小节：左标题 + 右正文的编排 ---------- */
+.block {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 56px);
+  padding: clamp(34px, 5vw, 58px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.block__head {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.block__head span {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  color: var(--jade-2);
+  text-transform: uppercase;
+}
+
+.block__head h2 {
+  margin-top: 8px;
+  font-size: clamp(19px, 2.2vw, 23px);
+  letter-spacing: 0.2em;
+  color: var(--ink);
+}
+
+.block__head h2::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 1px;
+  margin-top: 14px;
+  background: var(--line-strong);
+}
+
+/* 正文段落 */
+.prose p {
+  color: var(--ink-2);
+  font-size: 15.6px;
+  line-height: 2.1;
+  letter-spacing: 0.03em;
+}
+
+.prose p + p {
+  margin-top: 16px;
+}
+
+.prose strong {
+  color: var(--jade);
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .block {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .block__head {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .block__head h2::after {
+    display: none;
+  }
+}
+
+/* ---------- 4. 三候 ---------- */
+.hou-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.8vw, 20px);
+}
+
+.hou {
+  position: relative;
+  padding: 22px 20px 24px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.hou:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.hou__no {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--jade-2);
+}
+
+.hou__name {
+  margin-top: 8px;
+  font-size: clamp(17px, 2vw, 20px);
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.hou__desc {
+  margin-top: 10px;
+  font-size: 14.2px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+
+@media (max-width: 760px) {
+  .hou-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 5. 民俗 ---------- */
+.custom-list {
+  display: grid;
+  gap: 14px;
+}
+
+.custom {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 20px 22px;
+  background: linear-gradient(180deg, rgba(252, 250, 243, 0.9), rgba(247, 243, 234, 0.6));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.35s ease, transform 0.35s ease;
+}
+
+.custom:hover {
+  border-color: var(--line-strong);
+  transform: translateX(4px);
+}
+
+/* 序号：菱形小印 */
+.custom__mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  color: var(--jade);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.custom__mark i {
+  transform: rotate(-45deg);
+  font-style: normal;
+}
+
+.custom__title {
+  font-size: clamp(16px, 1.9vw, 18px);
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.custom__desc {
+  margin-top: 6px;
+  font-size: 14.4px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+
+/* ---------- 6. 养生 ---------- */
+.health {
+  padding: clamp(22px, 3vw, 32px);
+  background: var(--jade-pale);
+  border: 1px solid rgba(47, 107, 91, 0.18);
+  border-radius: var(--radius);
+}
+
+.health__title {
+  font-size: clamp(17px, 2vw, 20px);
+  letter-spacing: 0.16em;
+  color: var(--jade);
+}
+
+.health__tips {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.health__tips li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 14.8px;
+  line-height: 1.95;
+  color: var(--ink-2);
+}
+
+/* 用朱砂小菱形作为列表符号 */
+.health__tips li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  background: var(--cinnabar);
+  opacity: 0.7;
+  transform: rotate(45deg);
+}
+
+/* ---------- 7. 诗词 ---------- */
+.poem {
+  position: relative;
+  padding: clamp(28px, 4vw, 46px) clamp(20px, 4vw, 52px);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* 背景淡淡的水印字 */
+.poem::before {
+  content: "诗";
+  position: absolute;
+  right: -0.08em;
+  top: -0.22em;
+  font-size: clamp(120px, 18vw, 190px);
+  color: rgba(47, 107, 91, 0.05);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.poem__title {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
+}
+
+.poem__lines {
+  position: relative;
+  margin-top: 22px;
+  display: grid;
+  gap: 6px;
+  font-size: clamp(19px, 2.8vw, 26px);
+  line-height: 1.8;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
+
+.poem__author {
+  position: relative;
+  margin-top: 18px;
+  font-size: 13.5px;
+  letter-spacing: 0.16em;
+  color: var(--jade);
+}
+
+.poem__note {
+  position: relative;
+  margin: 18px auto 0;
+  max-width: 34em;
+  font-size: 13.6px;
+  line-height: 1.9;
+  color: var(--ink-3);
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+}
+
+/* ---------- 8. 上一节气 / 下一节气 ---------- */
+.term-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 2vw, 22px);
+  margin-top: clamp(30px, 5vw, 56px);
+}
+
+.term-switch a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 24px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.term-switch a:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-3px);
+}
+
+.term-switch__dir {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--ink-3);
+}
+
+.term-switch__name {
+  font-size: clamp(20px, 2.4vw, 26px);
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
+
+.term-switch__meta {
+  font-size: 12.6px;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+}
+
+.term-switch a:last-child {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* ---------- 9. 二十四节气快速索引 ---------- */
+.term-strip {
+  margin-top: clamp(30px, 5vw, 52px);
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(252, 250, 243, 0.6);
+}
+
+.term-strip__title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink-3);
+}
+
+.term-strip ul {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.term-strip a {
+  display: block;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.term-strip a:hover {
+  background: var(--jade-pale);
+  border-color: var(--line);
+  color: var(--jade);
+}
+
+.term-strip a.is-current {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: var(--paper-2);
+}
+
+/* 四季分隔：第 6、12、18 项后加深色细线 */
+.term-strip li:nth-child(6n) a {
+  margin-right: 2px;
+}
+
+@media (max-width: 900px) {
+  .term-strip ul {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .term-strip ul {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .term-switch {
+    grid-template-columns: 1fr;
+  }
+
+  .term-switch a:last-child {
+    text-align: left;
+    align-items: flex-start;
+  }
+}

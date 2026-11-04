@@ -1,0 +1,293 @@
+@charset "utf-8";
+/* ==========================================================================
+   about.css —— 「关于节气」页面样式：题头、条目网格、历史脉络、黄经表、问答
+   ========================================================================== */
+
+.about-hero {
+  padding: clamp(34px, 5vw, 62px) 0 clamp(24px, 4vw, 40px);
+  border-bottom: 1px solid var(--line);
+}
+
+.about-hero h1 {
+  font-size: clamp(30px, 5vw, 52px);
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+}
+
+.about-hero__lead {
+  margin-top: 18px;
+  max-width: 46em;
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 2;
+  color: var(--ink-2);
+}
+
+.about-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-top: 24px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+}
+
+/* ---------- 通用内容小节 ---------- */
+.about-block {
+  padding: clamp(34px, 5vw, 60px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.about-block__title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.about-block__title h2 {
+  font-size: clamp(20px, 2.6vw, 26px);
+  letter-spacing: 0.18em;
+}
+
+.about-block__title span {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--jade-2);
+  text-transform: uppercase;
+}
+
+.about-text p {
+  color: var(--ink-2);
+  font-size: 15.6px;
+  line-height: 2.1;
+}
+
+.about-text p + p {
+  margin-top: 14px;
+}
+
+.about-text strong {
+  color: var(--jade);
+  font-weight: 500;
+}
+
+/* ---------- 三栏要点 ---------- */
+.point-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 22px);
+  margin-top: 8px;
+}
+
+.point {
+  padding: 24px 22px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.point:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.point__no {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--cinnabar);
+}
+
+.point h3 {
+  margin-top: 10px;
+  font-size: 17.5px;
+  letter-spacing: 0.14em;
+}
+
+.point p {
+  margin-top: 9px;
+  font-size: 14.2px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+
+/* ---------- 历史脉络 ---------- */
+.timeline {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 26px;
+  border-left: 1px solid var(--line-strong);
+}
+
+.timeline__item {
+  position: relative;
+  padding: 0 0 26px 0;
+}
+
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: -31px;
+  top: 9px;
+  width: 9px;
+  height: 9px;
+  background: var(--paper);
+  border: 1px solid var(--jade-2);
+  transform: rotate(45deg);
+}
+
+.timeline__year {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--jade);
+}
+
+.timeline__title {
+  margin-top: 4px;
+  font-size: 16.5px;
+  letter-spacing: 0.1em;
+}
+
+.timeline__desc {
+  margin-top: 6px;
+  font-size: 14.2px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+
+/* ---------- 黄经对照表 ---------- */
+.longitude-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.longitude-grid span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 9px 12px;
+  background: rgba(252, 250, 243, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.longitude-grid em {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11.5px;
+  color: var(--jade-2);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 常见问题（原生折叠，无需脚本） ---------- */
+.faq {
+  border-top: 1px solid var(--line);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  position: relative;
+  padding: 18px 34px 18px 0;
+  cursor: pointer;
+  font-size: 15.8px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  color: var(--jade-2);
+  transition: transform 0.3s ease;
+}
+
+.faq details[open] summary::after {
+  content: "−";
+}
+
+.faq details p {
+  padding: 0 34px 20px 0;
+  font-size: 14.4px;
+  line-height: 2;
+  color: var(--ink-2);
+}
+
+/* ---------- 本站说明 ---------- */
+.site-note {
+  margin-top: 10px;
+  padding: clamp(20px, 3vw, 30px);
+  background: var(--jade-pale);
+  border: 1px solid rgba(47, 107, 91, 0.18);
+  border-radius: var(--radius);
+}
+
+.site-note ul {
+  margin-top: 12px;
+  display: grid;
+  gap: 9px;
+}
+
+.site-note li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14.4px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+
+.site-note li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 6px;
+  height: 6px;
+  background: var(--jade-2);
+  transform: rotate(45deg);
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .point-grid,
+  .longitude-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .point-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .longitude-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

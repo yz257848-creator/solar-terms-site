@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>二十四节气 · 中国人的时间智慧</title>
+  <meta name="description" content="二十四节气国风科普网站：以米白与青绿为色的中国传统色视觉，梳理二十四节气的时间、物候、民俗、养生与诗词，自动识别当令节气，附节气小问答。">
+  <meta name="keywords" content="二十四节气,国风,传统文化,节气科普,物候,民俗,养生,诗词">
+  <meta name="theme-color" content="#f8f4ea">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- ===== 页头 ===== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__seal" aria-hidden="true">节</span>
+        <span class="brand__text">
+          <span class="brand__name">二十四节气</span>
+          <span class="brand__en">The 24 Solar Terms</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="index.html" aria-current="page">首页</a>
+        <a href="#seasons">四季</a>
+        <a href="#quiz">小问答</a>
+        <a href="pages/about.html">关于节气</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-label="展开导航菜单" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== 首屏 ===== -->
+    <section class="hero">
+      <div class="hero__art" aria-hidden="true">
+        <img src="assets/images/hero-landscape.svg" alt="">
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <p class="hero__badge">人类非物质文化遗产代表作名录 · 2016</p>
+        <h1 class="hero__title">二十四节气</h1>
+        <p class="hero__lead">以天时为序，与万物同频</p>
+        <p class="hero__desc">
+          二十四节气是中国古人通过观察太阳周年运动，认知一年中时令、气候、物候变化规律所形成的知识体系。
+          它以十五天为一节，把一年分成二十四个刻度，让耕作、饮食、起居与诗意都有了可依循的节奏。
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#seasons">走入四季</a>
+          <a class="btn btn--ghost" href="pages/about.html">节气由来</a>
+        </div>
+      </div>
+
+      <p class="hero__side" aria-hidden="true"><span>春生</span><span>夏长</span><span>秋收</span><span>冬藏</span></p>
+      <p class="hero__song">春雨惊春清谷天 · 夏满芒夏暑相连</p>
+    </section>
+
+    <!-- ===== 当令节气（脚本自动识别） ===== -->
+    <section class="now" id="now" aria-labelledby="now-name">
+      <div class="container">
+        <div class="now__card" data-reveal>
+          <div class="now__main">
+            <p class="now__label">当令节气</p>
+            <div class="now__title-row">
+              <h2 class="now__name" id="now-name">立春</h2>
+              <span class="now__pinyin" id="now-pinyin">LÌ CHŪN</span>
+            </div>
+            <p class="now__slogan" id="now-slogan">东风解冻，蛰虫始振</p>
+            <p class="now__intro" id="now-intro">正在读取今日节气……</p>
+
+            <div class="now__facts">
+              <div>
+                <span>交节区间</span>
+                <strong id="now-range">—</strong>
+              </div>
+              <div>
+                <span>今日所处</span>
+                <strong id="now-day">—</strong>
+              </div>
+              <div>
+                <span>下一个节气</span>
+                <strong id="now-next">—</strong>
+              </div>
+            </div>
+
+            <!-- 二十四节气刻度尺，由脚本书写 -->
+            <div class="ruler" id="ruler" aria-hidden="true"></div>
+
+            <a class="btn btn--primary" id="now-link" href="pages/detail.html">查看节气详情</a>
+          </div>
+
+          <div class="now__art">
+            <img id="now-img" src="assets/images/terms/01-lichun.svg" alt="当令节气插画" width="800" height="600">
+            <span class="now__seal" id="now-seal" aria-hidden="true">立春</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 四季流转 ===== -->
+    <section class="section" id="seasons" aria-labelledby="seasons-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="section-head__eyebrow">Four Seasons</p>
+          <h2 id="seasons-title">四季流转 <small>二十四节气 · 七十二候</small></h2>
+          <p class="section-head__desc">
+            以「四立」为界，一年分为春、夏、秋、冬四时，每季六个节气。点击任一节气，可查看它的交节时间、
+            三候物候、民间习俗、时令养生与相关古诗。
+          </p>
+        </div>
+
+        <!-- 四个季节区块的容器，卡片由 js/home.js 依据 js/data.js 渲染 -->
+        <section class="season-block season-block--spring" data-season="spring" aria-label="春季六个节气">
+          <header class="season-head" data-reveal>
+            <img class="season-head__bg" src="assets/images/seasons/spring.svg" alt="春日山峦插画" loading="lazy">
+            <span class="season-head__veil" aria-hidden="true"></span>
+            <div class="season-head__inner">
+              <span class="season-head__char" aria-hidden="true">春</span>
+              <div>
+                <h3 class="season-head__title">春 · 生发</h3>
+                <p class="season-head__sub">立春 · 雨水 · 惊蛰 · 春分 · 清明 · 谷雨</p>
+              </div>
+              <span class="season-head__months">二月至四月</span>
+            </div>
+          </header>
+          <div class="term-grid" data-grid="spring"></div>
+        </section>
+
+        <section class="season-block season-block--summer" data-season="summer" aria-label="夏季六个节气">
+          <header class="season-head" data-reveal>
+            <img class="season-head__bg" src="assets/images/seasons/summer.svg" alt="夏日荷塘插画" loading="lazy">
+            <span class="season-head__veil" aria-hidden="true"></span>
+            <div class="season-head__inner">
+              <span class="season-head__char" aria-hidden="true">夏</span>
+              <div>
+                <h3 class="season-head__title">夏 · 繁盛</h3>
+                <p class="season-head__sub">立夏 · 小满 · 芒种 · 夏至 · 小暑 · 大暑</p>
+              </div>
+              <span class="season-head__months">五月至七月</span>
+            </div>
+          </header>
+          <div class="term-grid" data-grid="summer"></div>
+        </section>
+
+        <section class="season-block season-block--autumn" data-season="autumn" aria-label="秋季六个节气">
+          <header class="season-head" data-reveal>
+            <img class="season-head__bg" src="assets/images/seasons/autumn.svg" alt="秋日山野插画" loading="lazy">
+            <span class="season-head__veil" aria-hidden="true"></span>
+            <div class="season-head__inner">
+              <span class="season-head__char" aria-hidden="true">秋</span>
+              <div>
+                <h3 class="season-head__title">秋 · 收敛</h3>
+                <p class="season-head__sub">立秋 · 处暑 · 白露 · 秋分 · 寒露 · 霜降</p>
+              </div>
+              <span class="season-head__months">八月至十月</span>
+            </div>
+          </header>
+          <div class="term-grid" data-grid="autumn"></div>
+        </section>
+
+        <section class="season-block season-block--winter" data-season="winter" aria-label="冬季六个节气">
+          <header class="season-head" data-reveal>
+            <img class="season-head__bg" src="assets/images/seasons/winter.svg" alt="冬日雪景插画" loading="lazy">
+            <span class="season-head__veil" aria-hidden="true"></span>
+            <div class="season-head__inner">
+              <span class="season-head__char" aria-hidden="true">冬</span>
+              <div>
+                <h3 class="season-head__title">冬 · 闭藏</h3>
+                <p class="season-head__sub">立冬 · 小雪 · 大雪 · 冬至 · 小寒 · 大寒</p>
+              </div>
+              <span class="season-head__months">十一月至次年一月</span>
+            </div>
+          </header>
+          <div class="term-grid" data-grid="winter"></div>
+        </section>
+
+        <noscript>
+          <p style="margin-top:24px;color:#7b8781;font-size:14px;">
+            当前浏览器未启用 JavaScript，四季节气卡片无法显示。请开启 JavaScript 后刷新页面，或直接访问
+            <a href="pages/about.html" style="color:#2f6b5b;text-decoration:underline;">关于节气</a> 页面。
+          </p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ===== 节气歌 ===== -->
+    <section class="song-band" aria-label="二十四节气歌">
+      <div class="song-band__inner" data-reveal>
+        <p class="song-band__label">Twenty-Four Solar Terms Song</p>
+        <div class="song-band__lines">
+          <span>春雨惊春清谷天，夏满芒夏暑相连。</span>
+          <span>秋处露秋寒霜降，冬雪雪冬小大寒。</span>
+          <span>每月两节不变更，最多相差一两天。</span>
+          <span>上半年来六廿一，下半年是八廿三。</span>
+        </div>
+        <p class="song-band__note">
+          这首《二十四节气歌》把二十四个节气的顺序与大致日期编成韵语，是旧时农家孩童的启蒙读物。
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 节气小问答 ===== -->
+    <section class="section" id="quiz" aria-labelledby="quiz-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="section-head__eyebrow">Quiz</p>
+          <h2 id="quiz-title">节气小问答 <small>共 8 题</small></h2>
+          <p class="section-head__desc">读完四季，不妨用几道小题检验一下。每答一题都会给出简要解释。</p>
+        </div>
+
+        <div class="quiz__card" data-reveal>
+          <div class="quiz__top">
+            <span id="quiz-count">第 1 / 8 题</span>
+            <span id="quiz-score">答对 0 题</span>
+          </div>
+          <div class="quiz__bar"><span id="quiz-progress" style="width:0%"></span></div>
+
+          <p class="quiz__question" id="quiz-question">正在加载题目……</p>
+          <div class="quiz__options" id="quiz-options"></div>
+          <p class="quiz__feedback" id="quiz-feedback"></p>
+
+          <div class="quiz__footer" id="quiz-footer">
+            <span class="quiz__score" id="quiz-tip">选择你认为正确的选项</span>
+            <button class="btn" type="button" id="quiz-next" disabled>下一题</button>
+          </div>
+
+          <div class="quiz__result" id="quiz-result">
+            <h3 id="quiz-result-title">已完成</h3>
+            <p id="quiz-result-text"></p>
+            <button class="btn btn--primary" type="button" id="quiz-restart">再答一次</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <h3>关于本站</h3>
+          <p>
+            本站以二十四节气为线索，整理每个节气的时间、物候、民俗、养生与诗词，
+            以米白与青绿的国风视觉呈现，作为传统文化的科普尝试。
+          </p>
+        </div>
+        <div>
+          <h3>节气歌</h3>
+          <p class="site-footer__song">
+            春雨惊春清谷天，<br>
+            夏满芒夏暑相连。<br>
+            秋处露秋寒霜降，<br>
+            冬雪雪冬小大寒。
+          </p>
+        </div>
+        <div>
+          <h3>快速入口</h3>
+          <p><a href="#seasons">四季流转</a></p>
+          <p><a href="#quiz">节气小问答</a></p>
+          <p><a href="pages/about.html">关于二十四节气</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© <span data-year>2026</span> 二十四节气 · 国风科普</span>
+        <span>内容参考《月令七十二候集解》《淮南子·天文训》等文献</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" type="button" aria-label="返回顶部">↑</button>
+
+  <!-- 站点根目录：资源相对路径前缀为空 -->
+  <script>window.SITE_BASE = '';</script>
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
