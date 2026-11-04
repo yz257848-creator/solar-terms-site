@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>地球在哪儿 · 二十四节气的黄道俯视图</title>
+  <meta name="description" content="点选二十四节气，看那一刻地球在太阳周围的哪个位置：太阳黄经、地球黄经、日地距离、太阳直射点与北半球昼夜长短。">
+  <meta name="theme-color" content="#f8f4ea">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/orbit.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- ===== 页头 ===== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="../index.html">
+        <span class="brand__seal" aria-hidden="true">节</span>
+        <span class="brand__text">
+          <span class="brand__name">二十四节气</span>
+          <span class="brand__en">The 24 Solar Terms</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="../index.html">首页</a>
+        <a href="../index.html#seasons">四季</a>
+        <a href="orbit.html" aria-current="page">地球在哪儿</a>
+        <a href="../index.html#quiz">小问答</a>
+        <a href="about.html">关于节气</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-label="展开导航菜单" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+
+      <nav class="crumb" aria-label="面包屑导航">
+        <a href="../index.html">首页</a>
+        <span>/</span>
+        <span>地球在哪儿</span>
+      </nav>
+
+      <!-- ===== 题头 ===== -->
+      <section class="orb-hero">
+        <h1>地球在哪儿</h1>
+        <p class="orb-hero__lead">
+          节气记的是太阳走到了黄经多少度。可以换个方向看同一件事：那一刻，我们自己站的地球，
+          在轨道上的哪一头。下面这张图是从黄道北极往下看的俯视图，点一个节气，地球就挪到它当时的位置。
+        </p>
+        <div class="orb-hero__meta">
+          <span>视角：黄道面俯视，北在上</span>
+          <span>地球黄经 = 太阳黄经 + 180°</span>
+          <span>数据：24 个节气的太阳黄经，按天文近似计算</span>
+        </div>
+      </section>
+
+      <!-- ===== 图示 + 读数 ===== -->
+      <section class="orb-stage" aria-label="黄道俯视图与节气读数">
+        <figure class="orb-figure" data-reveal>
+          <div class="orb-figure__canvas" id="orb-stage"></div>
+          <figcaption>
+            圆环上的位置是「该节气时地球所在」，不是太阳。四个大字标的是那一处的太阳黄经，
+            所以夏至时地球在圆环下方，而太阳看上去在它的正对面。环上的箭头是地球公转方向；
+            地球上亮的一半，就是此刻的白天。
+          </figcaption>
+        </figure>
+
+        <!-- 读数面板，内容由 js/orbit.js 写入 -->
+        <div class="orb-panel" id="orb-panel" aria-live="polite">
+          <p class="orb-panel__kicker">正在读取……</p>
+        </div>
+      </section>
+
+      <!-- ===== 选节气 ===== -->
+      <section class="orb-picker" aria-labelledby="orb-picker-title">
+        <div class="orb-picker__head">
+          <div>
+            <h2 id="orb-picker-title">挑一个节气</h2>
+            <p class="orb-picker__desc">按一年里的先后排列，后面小字是这一天的太阳黄经。</p>
+          </div>
+          <div class="orb-picker__nav">
+            <button type="button" id="orb-prev" aria-label="上一个节气">‹</button>
+            <button type="button" id="orb-next" aria-label="下一个节气">›</button>
+          </div>
+        </div>
+        <div class="orb-chips" id="orb-chips"></div>
+        <noscript>
+          <p class="orb-picker__desc" style="margin-top:14px;">
+            这张图和节气按钮需要 JavaScript 才能显示。开启后刷新页面即可；节气本身的文字介绍在
+            <a href="../index.html#seasons" style="color:#2f6b5b;text-decoration:underline;">首页四季</a> 栏目里。
+          </p>
+        </noscript>
+      </section>
+
+      <!-- ===== 三点说明 ===== -->
+      <section class="orb-notes" aria-label="读图说明">
+        <article class="orb-point">
+          <p class="orb-point__no">01</p>
+          <h3>位置为什么是反的</h3>
+          <p>
+            节气记的是太阳走到黄经多少度，可这条线是从地球往太阳那边看过去的。地球自己当然在相反的一侧：
+            立春太阳在 315°，地球就在 135°，中间隔着太阳。
+          </p>
+        </article>
+        <article class="orb-point">
+          <p class="orb-point__no">02</p>
+          <h3>亮的那一半</h3>
+          <p>
+            图上地球分成明暗两半，亮的一半永远朝着太阳。地轴是斜的，斜的方向在宇宙里几乎不变，
+            所以冬至时北半球整个被带到背光的一侧，白天短、太阳也低。
+          </p>
+        </article>
+        <article class="orb-point">
+          <p class="orb-point__no">03</p>
+          <h3>近，但不暖</h3>
+          <p>
+            一月初地球离太阳最近，北半球偏偏是隆冬。冷暖主要看太阳高度和日照时间，
+            日地距离那点变化（约 3%）并不起决定作用。
+          </p>
+        </article>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <h3>关于本站</h3>
+          <p>
+            本站以二十四节气为线索，整理每个节气的时间、物候、民俗、养生与诗词，
+            以米白与青绿的国风视觉呈现，作为传统文化的科普尝试。
+          </p>
+        </div>
+        <div>
+          <h3>节气歌</h3>
+          <p class="site-footer__song">
+            春雨惊春清谷天，<br>
+            夏满芒夏暑相连。<br>
+            秋处露秋寒霜降，<br>
+            冬雪雪冬小大寒。
+          </p>
+        </div>
+        <div>
+          <h3>快速入口</h3>
+          <p><a href="../index.html#seasons">四季流转</a></p>
+          <p><a href="../index.html#quiz">节气小问答</a></p>
+          <p><a href="about.html">关于二十四节气</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© <span data-year>2026</span> 二十四节气 · 国风科普</span>
+        <span>图示为示意，日地距离与轨道形状经过夸张处理</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" type="button" aria-label="返回顶部">↑</button>
+
+  <script>window.SITE_BASE = '../';</script>
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/orbit.js"></script>
+</body>
+</html>

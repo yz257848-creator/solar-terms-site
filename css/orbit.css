@@ -1,0 +1,382 @@
+@charset "utf-8";
+/* ==========================================================================
+   orbit.css —— 「地球在哪儿」页面
+   图示由 js/orbit.js 生成内联 SVG，这里只负责版面、卡片与按钮
+   ========================================================================== */
+
+/* ---------- 1. 题头 ---------- */
+.orb-hero {
+  padding: clamp(26px, 4vw, 46px) 0 clamp(10px, 2vw, 20px);
+}
+
+.orb-hero h1 {
+  font-size: clamp(30px, 4.6vw, 46px);
+  letter-spacing: 0.12em;
+}
+
+.orb-hero__lead {
+  margin-top: 16px;
+  max-width: 33em;
+  color: var(--ink-2);
+  font-size: 15.5px;
+  line-height: 2;
+}
+
+.orb-hero__meta {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 26px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* ---------- 2. 图示与读数两栏 ---------- */
+.orb-stage {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(22px, 4vw, 52px);
+  align-items: start;
+  margin-top: clamp(18px, 3vw, 34px);
+}
+
+.orb-figure {
+  margin: 0;
+}
+
+.orb-figure__canvas {
+  position: relative;
+  padding: clamp(6px, 1.4vw, 16px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 50% 46%, rgba(252, 250, 243, 0.9), rgba(239, 231, 215, 0.42) 62%, rgba(248, 244, 234, 0.2) 100%);
+}
+
+.orb-figure__canvas svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.orb-figure figcaption {
+  margin-top: 14px;
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: var(--ink-3);
+}
+
+/* ---------- 3. 读数面板 ---------- */
+.orb-panel {
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(252, 250, 243, 0.78);
+  box-shadow: var(--shadow-sm);
+}
+
+.orb-panel__kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  color: var(--jade-2);
+}
+
+.orb-panel__kicker::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.orb-panel__title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 8px;
+}
+
+.orb-panel__title h2 {
+  font-size: clamp(28px, 3.6vw, 38px);
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.orb-panel__pinyin {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
+  color: var(--jade-3);
+  text-transform: uppercase;
+}
+
+.orb-panel__slogan {
+  margin-top: 6px;
+  font-size: 14.5px;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+}
+
+.orb-panel__text {
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.95;
+  color: var(--ink-2);
+}
+
+.orb-panel__text strong {
+  font-weight: 500;
+  color: var(--jade);
+}
+
+/* 四项读数：两行两列，用边框拼出细格 */
+.orb-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 18px 0 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.orb-facts > div {
+  padding: 9px 12px 10px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.orb-facts dt {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+}
+
+.orb-facts dd {
+  margin: 1px 0 0;
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.orb-facts dd small {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+
+/* 节气小注：左侧竖线，像笔记里的旁批 */
+.orb-panel__note {
+  margin-top: 16px;
+  padding: 2px 0 2px 14px;
+  border-left: 2px solid var(--jade-3);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+
+.orb-panel__actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.orb-panel__actions .btn {
+  padding: 9px 20px;
+  font-size: 14px;
+}
+
+.orb-panel__hint {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+/* ---------- 4. 节气选择区 ---------- */
+.orb-picker {
+  margin-top: clamp(34px, 5vw, 56px);
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(252, 250, 243, 0.6), rgba(231, 239, 233, 0.35));
+}
+
+.orb-picker__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.orb-picker__head h2 {
+  font-size: clamp(19px, 2.4vw, 23px);
+  letter-spacing: 0.1em;
+}
+
+.orb-picker__desc {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.orb-picker__nav {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.orb-picker__nav button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  color: var(--jade);
+  font-size: 17px;
+  line-height: 1;
+  background: rgba(252, 250, 243, 0.8);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.orb-picker__nav button:hover {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: var(--paper-2);
+}
+
+.orb-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: rgba(252, 250, 243, 0.7);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+  transition: color 0.22s ease, background-color 0.22s ease,
+    border-color 0.22s ease, transform 0.22s ease;
+}
+
+.chip em {
+  font-style: normal;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.chip:hover {
+  border-color: var(--jade-3);
+  background: var(--jade-pale);
+  color: var(--jade);
+  transform: translateY(-1px);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: var(--paper-2);
+}
+
+.chip[aria-pressed="true"] em {
+  color: rgba(252, 250, 243, 0.72);
+}
+
+/* ---------- 5. 三点说明 ---------- */
+.orb-notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 3vw, 32px);
+  margin-top: clamp(36px, 5vw, 60px);
+}
+
+.orb-point {
+  padding-top: 16px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.orb-point__no {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--jade-3);
+}
+
+.orb-point h3 {
+  margin: 6px 0 8px;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+}
+
+.orb-point p {
+  font-size: 14px;
+  line-height: 1.95;
+  color: var(--ink-2);
+}
+
+/* ---------- 6. 响应式 ---------- */
+@media (max-width: 960px) {
+  .orb-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .orb-figure__canvas {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .orb-notes {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .orb-picker__head {
+    align-items: center;
+  }
+
+  /* 触屏没有 Tab 键，这句提示就收起来 */
+  .orb-panel__hint {
+    display: none;
+  }
+}
+
+/* 极窄屏才把四项读数堆成一列 */
+@media (max-width: 360px) {
+  .orb-facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  /* 太小的时候藏掉 SVG 里的黄经小注，只留节气名 */
+  .orb-figure__canvas .og-sub {
+    display: none;
+  }
+
+  .chip {
+    min-height: 38px;
+    padding: 6px 10px;
+    font-size: 13.5px;
+  }
+}
